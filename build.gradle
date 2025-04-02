@@ -40,9 +40,12 @@ dependencies {
     api platform("org.springframework.cloud:spring-cloud-dependencies:2023.0.5")
 
     def themeVersion = version
+    def uiKitVersion = version
 
     constraints {
         api "io.openbpm.ui:openbpm-theme:$themeVersion"
+        api "io.openbpm.ui:ui-kit:$uiKitVersion"
+        api "io.openbpm.ui:openbpm-ui-kit-starter:$uiKitVersion"
 
         def camundaVersion = '7.21.0'
         api "org.camunda.community.rest:camunda-platform-7-rest-client-spring-boot:$camundaVersion"
