@@ -47,7 +47,7 @@ dependencies {
         api "io.openbpm.ui:ui-kit:$uiKitVersion"
         api "io.openbpm.ui:openbpm-ui-kit-starter:$uiKitVersion"
 
-        def camundaVersion = '7.21.0'
+        def camundaVersion = '7.22.0'
         api "org.camunda.community.rest:camunda-platform-7-rest-client-spring-boot:$camundaVersion"
         api "io.holunda.camunda-api:camunda-bpm-engine-api:$camundaVersion"
 
