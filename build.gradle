@@ -60,6 +60,10 @@ dependencies {
         api "org.projectlombok:lombok:1.18.36"
 
         api "org.vaadin.addons.componentfactory:spinner:24.1.0"
+
+        def testcontainersVersion = '1.20.6'
+        api "org.testcontainers:junit-jupiter:$testcontainersVersion"
+        api "org.testcontainers:postgresql:$testcontainersVersion"
     }
 }
 
