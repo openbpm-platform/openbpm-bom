@@ -37,7 +37,7 @@ javaPlatform {
 }
 
 dependencies {
-    api platform("org.springframework.cloud:spring-cloud-dependencies:2024.0.1")
+    api platform("org.springframework.cloud:spring-cloud-dependencies:2025.0.0")
 
     def themeVersion = version
     def uiKitVersion = version
