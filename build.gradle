@@ -24,7 +24,7 @@ repositories {
     } else {
         mavenLocal()
         maven {
-            url "https://nexus.openbpm.ru/repository/public"
+            url "https://nexus.openbpm.io/repository/public" //TODO: change to actual URL
         }
         mavenCentral()
     }
