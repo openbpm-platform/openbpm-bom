@@ -9,14 +9,14 @@ plugins {
 }
 
 repositories {
-    if (rootProject.hasProperty('openbpmRepoUrl')) {
+    if (rootProject.hasProperty('flowsetRepoUrl')) {
         maven {
-            url rootProject['openbpmRepoUrl']
+            url rootProject['flowsetRepoUrl']
 
-            if (rootProject.hasProperty('openbpmRepoUser') && rootProject.hasProperty('openbpmRepoPassword')) {
+            if (rootProject.hasProperty('flowsetRepoUser') && rootProject.hasProperty('flowsetRepoPassword')) {
                 credentials {
-                    username rootProject['openbpmRepoUser']
-                    password rootProject['openbpmRepoPassword']
+                    username rootProject['flowsetRepoUser']
+                    password rootProject['flowsetRepoPassword']
                 }
             }
         }
@@ -24,13 +24,13 @@ repositories {
     } else {
         mavenLocal()
         maven {
-            url "https://nexus.openbpm.io/repository/public" //TODO: change to actual URL
+            url "https://nexus.flowset.io/repository/public"
         }
         mavenCentral()
     }
 }
 
-group = 'io.openbpm.bom'
+group = 'io.flowset.bom'
 
 javaPlatform {
     allowDependencies()
@@ -43,9 +43,9 @@ dependencies {
     def uiKitVersion = version
 
     constraints {
-        api "io.openbpm.ui:openbpm-theme:$themeVersion"
-        api "io.openbpm.ui:ui-kit:$uiKitVersion"
-        api "io.openbpm.ui:openbpm-ui-kit-starter:$uiKitVersion"
+        api "io.flowset.ui:flowset-theme:$themeVersion"
+        api "io.flowset.ui:ui-kit:$uiKitVersion"
+        api "io.flowset.ui:flowset-ui-kit-starter:$uiKitVersion"
 
         def camundaVersion = '7.23.0'
         api "org.camunda.community.rest:camunda-platform-7-rest-client-spring-boot:$camundaVersion"
@@ -68,13 +68,13 @@ dependencies {
 }
 
 publishing {
-    if (rootProject.hasProperty('openbpmUploadUrl')) {
+    if (rootProject.hasProperty('flowsetUploadUrl')) {
         repositories {
             maven {
-                url = rootProject['openbpmUploadUrl']
+                url = rootProject['flowsetUploadUrl']
                 credentials {
-                    username rootProject['openbpmUploadUser']
-                    password rootProject['openbpmUploadPassword']
+                    username rootProject['flowsetUploadUser']
+                    password rootProject['flowsetUploadPassword']
                 }
                 allowInsecureProtocol = true
             }
@@ -83,7 +83,7 @@ publishing {
 
     publications {
         javaPlatformMaven(MavenPublication) {
-            artifactId = 'openbpm-bom'
+            artifactId = 'flowset-bom'
             from components.javaPlatform
         }
     }
