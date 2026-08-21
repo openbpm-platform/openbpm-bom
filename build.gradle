@@ -11,12 +11,12 @@ plugins {
 repositories {
     if (rootProject.hasProperty('flowsetRepoUrl')) {
         maven {
-            url rootProject['flowsetRepoUrl']
+            url = rootProject['flowsetRepoUrl']
 
             if (rootProject.hasProperty('flowsetRepoUser') && rootProject.hasProperty('flowsetRepoPassword')) {
                 credentials {
-                    username rootProject['flowsetRepoUser']
-                    password rootProject['flowsetRepoPassword']
+                    username = rootProject['flowsetRepoUser']
+                    password = rootProject['flowsetRepoPassword']
                 }
             }
         }
@@ -24,7 +24,7 @@ repositories {
     } else {
         mavenLocal()
         maven {
-            url "https://nexus.flowset.io/repository/public"
+            url = "https://nexus.flowset.io/repository/public"
         }
         mavenCentral()
     }
@@ -37,7 +37,7 @@ javaPlatform {
 }
 
 dependencies {
-    api platform("org.springframework.cloud:spring-cloud-dependencies:2025.0.0")
+    api platform("org.springframework.cloud:spring-cloud-dependencies:2025.1.2")
 
     def themeVersion = version
     def uiKitVersion = version
@@ -47,23 +47,22 @@ dependencies {
         api "io.flowset.ui:ui-kit:$uiKitVersion"
         api "io.flowset.ui:flowset-ui-kit-starter:$uiKitVersion"
 
-        def camundaVersion = '7.23.0'
-        api "org.camunda.community.rest:camunda-platform-7-rest-client-spring-boot:$camundaVersion"
-        api "io.holunda.camunda-api:camunda-bpm-engine-api:$camundaVersion"
+        def clientVersion = '2026.04.2'
+        api "io.holunda.c7:c7-rest-client-spring-boot-starter-4:$clientVersion"
 
-        api "com.fasterxml.jackson.module:jackson-module-kotlin:2.13.3"
+        api "tools.jackson.module:jackson-module-kotlin:3.0.3"
 
         def mapstructVersion = '1.6.3'
         api "org.mapstruct:mapstruct:$mapstructVersion"
         api "org.mapstruct:mapstruct-processor:$mapstructVersion"
 
-        api "org.projectlombok:lombok:1.18.36"
+        api "org.projectlombok:lombok:1.18.46"
 
         api "org.vaadin.addons.componentfactory:spinner:24.1.0"
 
-        def testcontainersVersion = '1.20.6'
-        api "org.testcontainers:junit-jupiter:$testcontainersVersion"
-        api "org.testcontainers:postgresql:$testcontainersVersion"
+        def testcontainersVersion = '2.0.3'
+        api "org.testcontainers:testcontainers-junit-jupiter:$testcontainersVersion"
+        api "org.testcontainers:testcontainers-postgresql:$testcontainersVersion"
     }
 }
 
@@ -73,8 +72,8 @@ publishing {
             maven {
                 url = rootProject['flowsetUploadUrl']
                 credentials {
-                    username rootProject['flowsetUploadUser']
-                    password rootProject['flowsetUploadPassword']
+                    username = rootProject['flowsetUploadUser']
+                    password = rootProject['flowsetUploadPassword']
                 }
                 allowInsecureProtocol = true
             }
